@@ -143,5 +143,5 @@ var friendsArray = [
         ]
     }
     ];
-    // Right now i am gonna export trhe array//
+    // Right now i am gonna export the array//
     module.exports = friendsArray;
