@@ -19,6 +19,8 @@
   "homepage": "https://github.com/Haralambos1991/FriendFinder#readme",
   "dependencies": {
     "express": "^4.16.4",
+    "modules": "^0.4.0",
+    "node": "^12.10.0",
     "path": "^0.12.7"
   }
 }
