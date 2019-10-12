@@ -1,23 +1,15 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <!--Require meta tags-->
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
-    <!--Bootstrap Css-->
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
-    <title>Friend finder</title>
-</head>
-
-<body>
-    <img src="/FriendFinder/app/public/images/brain.JPG">
-    <div class="container">
-        <div class="row bg-success mt-5 py-3">
-            <h1 class="mx-auto text-white"> Survey...</h1>
-        </div>
-        <div class="row"></div>
-
+<html>
+  <head>
+    <title>Survey</title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body>
+<img src="/images/images.jpg">
+<div class="container">
+    <div class="row bg-success mt-5 py-3">
+        <h1>{{title}}</h1>
+    </div>
         <form id = "friend-form" class="pt-3">
             <div class="form-group col-8 mx-auto">
                 <label for="nameField">Your name</label>
@@ -178,50 +170,10 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
         crossorigin="anonymous"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy"
-        crossorigin="anonymous"></script>
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
-</body>
 
-</html>
+    <script type="text/javascript" src="survey.js"></script>
 
-<script type="text/javascript">
-    // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
-    // In essence, when the user hits submit, jQuery grabs all of the fields then sends a post request to our api
-    // Our api recognizes the route (/api/tables)... and then runs the associated code (found in api-routes.js).
-    // In this case the associated code "saves" the data to the table-data.js file or waitinglist-data.js file
-    $("#submit").on("click", function (event) {
-        event.preventDefault();
-        let answerArray = [parseFloat($("#question1").val()), parseFloat($("#question2").val()), parseFloat($(
-                "#question3").val()), parseFloat($("#question4").val()), parseFloat($("#question5").val()),
-            parseFloat($("#question6").val()), parseFloat($("#question7").val()), parseFloat($("#question8")
-                .val()), parseFloat($("#question9").val()), parseFloat($("#question10").val())
-        ];
-        var sum = 0;
-        for (n of answerArray) {
-            sum += parseFloat(n, 10);
-        }
-        var avg = parseFloat(sum / answerArray.length);
-        console.log(avg);
-        //Here we grab the form elements
-        var newFriend = {
-            friendName: $("#nameField").val().trim(),
-            profileImage: $("#imageField").val().trim(),
-            answerAvg: avg
-        };
-        $.post("/api/friends", newFriend,
-            function (data) {
-                console.log("add.html", data);
-                alert("You've been added to our database! \nNow let's see who your best match is...");
-                //Displays Best Friend Match
-                $("#match-name").text(data.friendName);
-                $("#match-img").attr("src", data.profileImage);
-                $("#bf-modal").modal("toggle");
-                //Clears Form:
-                $("#friend-form").val("");
-                // $("#nameField").val("");
-                // $("#imageField").val("");
-                // $("#quesion1").val("");
-            });
-    });
-</script>
+
+    
+    
+ 
