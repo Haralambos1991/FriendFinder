@@ -53,7 +53,10 @@ $("#submit").on("click", function(event) {
                 alert("You've been added to our database! \nNow let's see who your best match is...");
                 //Displays Best Friend Match
                 $("#match-name").text(data.friendName);
-                $("#match-img").attr("src", data.profileImage);
+                console.log("data", data);
+                var randomResult = data[Math.floor(Math.random() * data.length)];
+                console.log("randomResult", randomResult);
+                $("#match-img").attr("src", randomResult.photo);
 
                 $("#friend-form").val("");
                 // In this code below we create the Front-end JavaScript which "POSTS" our form data to our express server.
